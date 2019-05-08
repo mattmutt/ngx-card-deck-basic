@@ -1,0 +1,120 @@
+{
+    "id": "deck3",
+    "cards": [
+        {
+            "id": "hello-introduction-1",
+            "component": "card-introduction",
+            "header": {
+                "title": "Hello 1 Introduction",
+                "icon": "book-bookmark"
+            },
+            "layout": {
+                "x": 0,
+                "y": 0,
+                "width": 1,
+                "height": 2
+            },
+            "providers": {
+                "introduction": {
+                    "assetTypeId": "1",
+                    "channelTopic": "card-introduction-chat123"
+                }
+            },
+            "services": [
+                {
+                    "network": {
+                        "url": "/network/vendors/extension/{{ route.dashboardOrganizerPath }}/plugins/{{ route.dashboardConfigurationIdentifier }}/cards/{{ document.id }}/data/introduction-model.json"
+                    }
+                }
+            ],
+            "templates": [
+                {
+                    "body": {
+                        "organization": "custom_sample",
+                        "template": "introductionView"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "hello-introduction-2",
+            "component": "card-introduction",
+            "header": {
+                "title": "Hello 2 Introduction",
+                "icon": "mountain"
+            },
+            "layout": {
+                "x": 0,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            },
+            "providers": {
+                "introduction": {
+                    "assetTypeId": "2",
+                    "channelTopic": "card-introduction-chat123"
+                }
+            },
+            "services": [
+                {
+                    "network": {
+                        "url": "/network/vendors/extension/{{ route.dashboardOrganizerPath }}/plugins/{{ route.dashboardConfigurationIdentifier }}/cards/{{ document.id }}/data/introduction-model.json"
+                    }
+                }
+            ],
+            "templates": [
+                {
+                    "body": {
+                        "organization": "custom_sample",
+                        "template": "introductionView"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "earth-satellite",
+            "component": "card-remote-served",
+            "header": {
+                "title": "Satellite - USA",
+                "icon": "map"
+            },
+            "layout": {
+                "x": 1,
+                "y": 0,
+                "width": 2,
+                "height": 2
+            },
+            "services": [
+                {
+                    "remote-served-service": {
+                        "url": "https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/625x375.jpg"
+                    }
+                }
+            ],
+            "templates": []
+        },
+        {
+            "id": "news-site",
+            "component": "card-remote-served",
+            "header": {
+                "title": "Test Plugin",
+                "icon": "lightbulb"
+            },
+            "layout": {
+                "x": 2,
+                "y": 2,
+                "width": 1,
+                "height": 2
+            },
+            "services": [
+                {
+                    "remote-served-service": {
+                        "url": "//www.test.com"
+                    }
+                }
+            ],
+            "templates": []
+        }
+    ]
+}
+

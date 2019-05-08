@@ -1,0 +1,10 @@
+{
+    "sections": [
+        {
+            "label": "Project",
+            "links": [
+                {"path": ["/dashboard/dashboard-page/com_company_starter/deck3"], "label": "Sample Deck", "subtitle": "Starter seed"}
+            ]
+        }
+    ]
+}
