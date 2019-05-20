@@ -1,0 +1,73 @@
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1;
+    flex-basis: 100%;
+    width: 100%;
+    height: 100%;
+
+}
+
+section.loaded {
+    padding: 0;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    $panels-count: 2;
+    $panels-width-distribution: 100 / $panels-count;
+
+    section.panels {
+        padding: 0;
+        display: flex;
+        overflow: hidden;
+        flex: 1;
+
+        > * {
+            flex: $panels-width-distribution * 1%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 0.2rem;
+        }
+
+        .panelTitle {
+            margin: 0;
+            flex: 0;
+            display: block;
+            background: rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        section {
+
+            &.source {
+                textarea {
+                    white-space: pre;
+                    text-wrap: none;
+                    font-family: monospace;
+                    height: 100%;
+                }
+            }
+
+            &.form {
+                overflow: auto;
+
+                JSON-EDITOR {
+                    height: 100%;
+                    flex: 1;
+                    overflow: auto;
+
+                    ::ng-deep EDITOR {
+                        @import "json-editor";
+                    }
+                }
+
+
+            }
+        }
+
+    }
+
+}
+

@@ -1,0 +1,50 @@
+<ng-container *ngIf="loadingError$ | async; else noLoadingError">
+    <section class="load-exception">
+        Error loading configuration: {{ activatedRoute.snapshot.paramMap.get("configuration") }}
+    </section>
+</ng-container>
+
+
+<ng-template #noLoadingError>
+
+    <section *ngIf="preprocessedDeckConfigurationSchema$ | async as configurationJSON; else awaitingConfiguration" class="loaded">
+
+        <h4>
+            Editor: <b>{{ configurationJSON.id }}</b>
+        </h4>
+
+        <section class="panels">
+            <section class="source">
+
+                <h4 class="panelTitle">Source
+                    <small>
+                        ({{ getStringCharacterCount(renderedSourceJSON | json) }} bytes)
+                    </small>
+                    <button (click)="onCopyToClipboard(sourceInput, $event)" class="btn btn-sm btn-primary">+ Clipboard</button>
+                </h4>
+
+                <textarea #sourceInput readonly [textContent]="renderedSourceJSON | json"></textarea>
+            </section>
+
+            <section class="form">
+                <h4 class="panelTitle">Form</h4>
+                <json-editor #editorComponent [schema]="preprocessedDeckJSONSchema"
+                             [initialValue]="configurationJSON"
+                             (updateValue)="onEditorUpdateValue($event)"
+                             theme="bootstrap4">
+                </json-editor>
+
+            </section>
+        </section>
+
+    </section>
+
+    <ng-template #awaitingConfiguration>
+        <section class="loading">
+            Loading...
+        </section>
+    </ng-template>
+
+</ng-template>
+
+

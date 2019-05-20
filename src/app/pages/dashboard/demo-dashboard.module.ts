@@ -1,6 +1,7 @@
 import { NgModule, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from "@angular/forms";
+import { JSONEditorModule } from "angular-schema-based-json-editor";
 import { DemoDashboardPageComponent } from './dashboard-page/demo-dashboard-page.component';
 import { DemoDashboardOutletSharedProviderModule } from "./dashboard-page/integration/card-outlet/demo-dashboard-outlet-shared-provider.module";
 import { DemoDashboardDeploymentConfigurationService } from './dashboard-page/integration/environment/demo-dashboard-deployment-configuration.service';
@@ -9,6 +10,7 @@ import { DemoDashboardModuleIntegrationTokenService } from "./dashboard-page/int
 import { DemoDashboardPlatformCommunicatorService } from './dashboard-page/integration/platform/demo-dashboard-platform-communicator.service';
 import { DemoAppSessionObserverService } from './dashboard-page/client/core/com.company.group/lib/services/sample-product/platform/demo-app-session-observer.service';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { DemoDeckConfigurationEditorComponent } from "./deck-configuration-editor/demo-deck-configuration-editor.component";
 import { DemoDashboardRoutingModule } from "./demo-dashboard-routing.module";
 import { DemoDashboardComponent } from "./demo-dashboard.component";
 import { DemoDashboardPageViewportPanService } from "./dashboard-page/demo-dashboard-page-viewport-pan.service";
@@ -25,6 +27,7 @@ import { DemoDashboardTransactionAgentService } from "./dashboard-page/demo-dash
         ReactiveFormsModule,
         DemoDashboardRoutingModule,
         DemoDashboardOutletSharedProviderModule,
+        JSONEditorModule,
         DashboardModule,
     ],
 
@@ -70,7 +73,7 @@ import { DemoDashboardTransactionAgentService } from "./dashboard-page/demo-dash
 
     ],
 
-    declarations: [DemoDashboardComponent, DemoDashboardPageComponent],
+    declarations: [DemoDashboardComponent, DemoDashboardPageComponent, DemoDeckConfigurationEditorComponent],
 
     exports: [DemoDashboardComponent]
 

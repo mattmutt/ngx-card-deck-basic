@@ -1,0 +1,171 @@
+
+object-editor {
+    display: block;
+    background-color: antiquewhite;
+
+    // generic container for actual typed implementation
+    editor {
+        display: block;
+        padding: 0.25rem;
+    }
+
+    .schema-based-json-editor-- {
+
+        &row {
+
+            // sectional title
+            h3 {
+                font-weight: normal;
+                font-size: 12pt;
+                // center
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &:hover {
+                    text-decoration: underline;
+                    background-color: rgba(0, 0, 0, .1);
+                }
+            }
+
+            description {
+                p {
+                    font-size: 10pt;
+                    margin: 0;
+                    padding: 0 1rem;
+                }
+            }
+
+            // editing
+            &:focus-within {
+                background-color: rgba(0, 0, 88, .1);
+            }
+
+        }
+
+
+        &button-group {
+            padding: 3px;
+            line-height: normal;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, .1);
+            }
+
+        }
+
+        &button {
+            text-transform: none;
+            line-height: normal;
+            height: auto;
+            min-width: auto;
+            max-width: none;
+            margin: 0 3px;
+        }
+
+        &card {
+            margin: 0;
+        }
+
+    }
+
+}
+
+
+number-editor, string-editor {
+
+    .schema-based-json-editor-- {
+
+        &row, &error-row {
+            display: flex;
+
+            // sectional title
+            label {
+                flex-shrink: 0;
+
+                &:hover {
+                }
+            }
+
+            input {
+                flex-grow: 1;
+            }
+
+            description {
+                display: inline-block;
+                .form-text {
+
+                }
+            }
+        }
+
+
+        // entry valid, no error
+        &row {
+
+            // editing
+            &:focus-within {
+                background-color: rgba(0, 230, 88, .1);
+            }
+
+        }
+
+
+        // entry bad, validation error
+
+        &error-row {
+
+            // sectional title
+            label {
+                flex-shrink: 0;
+            }
+
+            input {
+                flex-grow: 1;
+            }
+
+            // validation error
+            description {
+
+                .form-text {
+                    outline: 1px solid rgba(99, 35, 35, .2);
+                    outline-offset: -1px;
+                    background-color: rgba(233, 55, 55, .1);
+                }
+            }
+
+            // editing
+            &:focus-within {
+                background-color: rgba(233, 55, 55, .1);
+            }
+
+        }
+
+
+    }
+
+
+}
+
+
+number-editor {
+
+    .schema-based-json-editor-- {
+
+        &row, &error-row {
+
+            // sectional title
+            label {
+            }
+
+            input {
+                // right align number for niceness
+                text-align: right;
+            }
+
+
+        }
+    }
+}
+
+

@@ -1,15 +1,14 @@
 import { Inject, Injectable, NgModule } from "@angular/core";
-import { ActivatedRouteSnapshot, Resolve, Route, RouterModule, RouterStateSnapshot, Routes } from "@angular/router";
+import { ActivatedRouteSnapshot, Resolve, RouterModule, RouterStateSnapshot, Routes } from "@angular/router";
+import { DashboardConfigurationSchema, DashboardService, DeploymentConfigurationBase, GlobalStateBase } from "ngx-card-deck";
 import { Observable } from "rxjs";
 import { DemoDashboardPageComponent } from "./dashboard-page/demo-dashboard-page.component";
 import { DemoDashboardOrganizerPackageEnumeration } from "./dashboard-page/integration/card-outlet/demo-dashboard-organizer-package.class";
+import { DemoDashboardUserLocaleEntity } from "./dashboard-page/integration/environment/demo-dashboard-business-context-entity.state.interface";
 import { DemoDashboardDeploymentConfigurationService } from "./dashboard-page/integration/environment/demo-dashboard-deployment-configuration.service";
 import { DemoDashboardGlobalStateService } from "./dashboard-page/integration/environment/demo-dashboard-global-state.service";
-import { DemoDashboardUserLocaleEntity } from "./dashboard-page/integration/environment/demo-dashboard-business-context-entity.state.interface";
+import { DemoDeckConfigurationEditorComponent } from "./deck-configuration-editor/demo-deck-configuration-editor.component";
 import { DemoDashboardComponent } from "./demo-dashboard.component";
-import { DashboardConfigurationSchema } from "ngx-card-deck";
-import { DeploymentConfigurationBase, GlobalStateBase } from "ngx-card-deck";
-import { DashboardService } from "ngx-card-deck";
 
 
 const resources = {
@@ -75,6 +74,14 @@ export const demoDashboardRoutes: Routes = [
                 component: DemoDashboardPageComponent,
                 resolve: {configuration: DemoDashboardRouting},
                 // children: [demoModuleRouteMap.demoClientMetricsBillboard] ( Lazy load )
+            },
+
+
+            /* optional editor utility for generating deck JSON file consumed by preprocessor */
+            {
+                path: "deck-configuration-editor/:organizer/:configuration",
+                component: DemoDeckConfigurationEditorComponent,
+                // resolve: {configuration: DemoDashboardRouting},
             }
 
         ]

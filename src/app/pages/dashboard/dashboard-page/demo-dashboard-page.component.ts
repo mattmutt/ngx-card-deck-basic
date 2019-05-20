@@ -39,6 +39,9 @@ const resources = {
     grid: {
         stateChangeCheckInterval: 10, // monitor grid state centrally
         backgroundMouseDraggable: false  // will background panning by mouse occur
+    },
+    navigation: {
+        editor: "deck-configuration-editor",
     }
 };
 
@@ -75,7 +78,7 @@ export class DemoDashboardPageComponent implements OnInit, AfterViewInit, OnDest
     accountingJournalLayoutItemsTracking: number;
 
     isDebugMode = false;
-    isActionToolbarMinimized = true;
+    isActionToolbarMinimized = false;
 
     gridContainerAssemblyInstance: GridContainerDashboardContainerComponent;
 
@@ -277,6 +280,11 @@ export class DemoDashboardPageComponent implements OnInit, AfterViewInit, OnDest
     // inform gridster directly. a bit low-level
     onZoomChangeEvent(zoomLevel: number) {
         this.onZoomCenterViewport(zoomLevel);
+    }
+
+    // launch editor view for examining and changing the deck metadata expected by the card JSON preprocessor engine
+    onEditButtonClick(evt: Event) {
+        this.router.navigate([ resources.navigation.editor, this.routeOrganizerKey, this.componentConfiguration.id], { relativeTo: this.activatedRoute.parent});
     }
 
     private onZoomCenterViewport(zoomLevel: number) {

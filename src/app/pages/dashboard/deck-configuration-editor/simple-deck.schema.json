@@ -1,0 +1,350 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "Card Deck schema",
+    "description": "Compose an arrangement and layout of a deck of cards",
+    "required": [
+        "id",
+        "cards"
+    ],
+    "properties": {
+        "id": {
+            "$id": "#/properties/id",
+            "type": "string",
+            "title": "Deck Resource Id",
+            "default": "",
+            "examples": [
+                "my-deck-identifier"
+            ],
+            "propertyOrder": 1,
+            "pattern": "^(.*)$"
+        },
+        "cards": {
+            "$id": "#/properties/cards",
+            "type": "array",
+            "title": "Cards schema",
+            "items": {
+                "$id": "#/properties/cards/items",
+                "type": "object",
+                "title": "Card Items schema",
+                "collapsed" : true,
+                "required": [
+                    "id",
+                    "component",
+                    "header",
+                    "layout",
+                    "providers",
+                    "services",
+                    "templates"
+                ],
+                "properties": {
+                    "id": {
+                        "$id": "#/properties/cards/items/properties/id",
+                        "type": "string",
+                        "title": "Card identifier",
+                        "default": "",
+                        "examples": [
+                            "unique identifier for this deck, as in `my-card-identifier-123`"
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "component": {
+                        "$id": "#/properties/cards/items/properties/component",
+                        "type": "string",
+                        "title": "Component notation",
+                        "default": "",
+                        "examples": [
+                            "must map to existing `identifier` as described in `demo-dashboard-card-outlet-render-definitions.class.ts` setup configuration"
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "header": {
+                        "$id": "#/properties/cards/items/properties/header",
+                        "type": "object",
+                        "title": "Header schema",
+                        "required": [
+                            "title",
+                            "icon"
+                        ],
+                        "properties": {
+                            "title": {
+                                "$id": "#/properties/cards/items/properties/header/properties/title",
+                                "type": "string",
+                                "title": "Title",
+                                "default": "",
+                                "examples": [
+                                    "My Card Title"
+                                ],
+                                "pattern": "^(.*)$"
+                            },
+                            "icon": {
+                                "$id": "#/properties/cards/items/properties/header/properties/icon",
+                                "type": "string",
+                                "title": "Icon class",
+                                "default": "",
+                                "examples": [
+                                    "CSS class that is added on an element in header. Ensure styles are already defined to render"
+                                ],
+                                "pattern": "^(.*)$"
+                            }
+                        }
+                    },
+                    "layout": {
+                        "$id": "#/properties/cards/items/properties/layout",
+                        "type": "object",
+                        "title": "Layout schema",
+                        "required": [
+                            "x",
+                            "y",
+                            "width",
+                            "height"
+                        ],
+                        "properties": {
+                            "x": {
+                                "$id": "#/properties/cards/items/properties/layout/properties/x",
+                                "type": "integer",
+                                "title": "X coordinate",
+                                "default": 0,
+                                "minimum": 0,
+                                "examples": [
+                                    1
+                                ]
+                            },
+                            "y": {
+                                "$id": "#/properties/cards/items/properties/layout/properties/y",
+                                "type": "integer",
+                                "title": "Y coordinate",
+                                "default": 0,
+                                "minimum": 0,
+                                "examples": [
+                                    1
+                                ]
+                            },
+                            "width": {
+                                "$id": "#/properties/cards/items/properties/layout/properties/width",
+                                "type": "integer",
+                                "title": "Width dimension",
+                                "default": 0,
+                                "minimum": 1,
+                                "examples": [
+                                    1
+                                ]
+                            },
+                            "height": {
+                                "$id": "#/properties/cards/items/properties/layout/properties/height",
+                                "type": "integer",
+                                "title": "Height dimension",
+                                "default": 0,
+                                "minimum": 1,
+                                "examples": [
+                                    1
+                                ]
+                            }
+                        }
+                    },
+                    "providers": {
+                        "$id": "#/properties/cards/items/properties/providers",
+                        "type": "object",
+                        "title": "Provider Implementation",
+                        "properties": {
+                            "introduction": {
+                                "$id": "#/properties/cards/items/properties/providers/properties/introduction",
+                                "type": "object",
+                                "title": "Introduction Provider",
+                                "requiredWhen": [
+                                    "introduction"
+                                ],
+                                "required": [
+                                    "assetTypeId",
+                                    "channelTopic"
+                                ],
+                                "default": {
+                                    "assetTypeId": "123",
+                                    "channelTopic": "my-topic-id"
+                                },
+                                "properties": {
+                                    "assetTypeId": {
+                                        "$id": "#/properties/cards/items/properties/providers/properties/introduction/properties/assetTypeId",
+                                        "type": "string",
+                                        "title": "Asset type ID",
+                                        "default": "123",
+                                        "examples": [
+                                            "1"
+                                        ],
+                                        "pattern": "^([0-9]+)$"
+                                    },
+                                    "channelTopic": {
+                                        "$id": "#/properties/cards/items/properties/providers/properties/introduction/properties/channelTopic",
+                                        "type": "string",
+                                        "title": "Channel topic",
+                                        "default": "my topic",
+                                        "examples": [
+                                            "card-introduction-chat123"
+                                        ],
+                                        "pattern": "^(.*)$"
+                                    }
+                                }
+                            },
+                            "billboard": {
+                                "$id": "#/properties/cards/items/properties/providers/properties/billboard",
+                                "type": "object",
+                                "title": "Billboard Provider",
+                                "requiredWhen": [
+                                    "billboard"
+                                ],
+                                "required": [
+                                    "location",
+                                    "electrical"
+                                ],
+                                "default": {
+                                    "location": "LA",
+                                    "electrical": 2000
+                                },
+                                "properties": {
+                                    "location": {
+                                        "$id": "#/properties/cards/items/properties/providers/properties/billboard/properties/location",
+                                        "type": "string",
+                                        "title": "Sign location",
+                                        "default": "location downtown",
+                                        "examples": [
+                                            "downtown"
+                                        ],
+                                        "pattern": "^(.*)$"
+                                    },
+                                    "electrical": {
+                                        "$id": "#/properties/cards/items/properties/providers/properties/billboard/properties/electrical",
+                                        "type": "integer",
+                                        "title": "Electrical consumption (Watts)",
+                                        "default": 1,
+                                        "minimum": 0,
+                                        "maximum": 100000,
+                                        "examples": [
+                                            5000
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "collapsed": false,
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "services": {
+                        "$id": "#/properties/cards/items/properties/services",
+                        "type": "array",
+                        "title": "Services",
+
+                        "items": {
+                            "$id": "#/properties/cards/items/properties/services/items",
+                            "type": "object",
+                            "title": "Items",
+
+
+                            "properties": {
+
+                                "network": {
+                                    "$id": "#/properties/cards/items/properties/services/items/properties/network",
+                                    "type": "object",
+                                    "title": "Network schema",
+                                    "required": [
+                                        "url"
+                                    ],
+                                    "properties": {
+                                        "url": {
+                                            "$id": "#/properties/cards/items/properties/services/items/properties/network/properties/url",
+                                            "type": "string",
+                                            "title": "Endpoint service URL",
+                                            "default": "",
+                                            "examples": [
+                                                "/network/path/my-service.json"
+                                            ],
+                                            "pattern": "^(.*)$"
+                                        }
+                                    }
+                                },
+
+
+                                "remote-served-service": {
+                                    "$id": "#/properties/cards/items/properties/services/items/properties/remote-served-service",
+                                    "type": "object",
+                                    "title": "Content URL",
+                                    "required": [
+                                        "url"
+                                    ],
+                                    "properties": {
+                                        "url": {
+                                            "$id": "#/properties/cards/items/properties/services/items/properties/remote-served-service/properties/url",
+                                            "type": "string",
+                                            "title": "URL",
+                                            "default": "",
+                                            "examples": [
+                                                "http://www.example.com"
+                                            ],
+                                            "pattern": "^(.*)$"
+                                        }
+                                    }
+                                }
+
+
+
+                            }
+
+                        }
+
+
+
+                    },
+                    "templates": {
+                        "$id": "#/properties/cards/items/properties/templates",
+                        "type": "array",
+                        "title": "Templates schema",
+                        "items": {
+                            "$id": "#/properties/cards/items/properties/templates/items",
+                            "type": "object",
+                            "title": "Items schema",
+                            "required": [
+                                "body"
+                            ],
+                            "properties": {
+                                "body": {
+                                    "$id": "#/properties/cards/items/properties/templates/items/properties/body",
+                                    "type": "object",
+                                    "title": "Body schema",
+                                    "required": [
+                                        "organization",
+                                        "template"
+                                    ],
+                                    "properties": {
+                                        "organization": {
+                                            "$id": "#/properties/cards/items/properties/templates/items/properties/body/properties/organization",
+                                            "type": "string",
+                                            "title": "Organization schema",
+                                            "default": "",
+                                            "examples": [
+                                                "my_organization"
+                                            ],
+                                            "pattern": "^(.*)$"
+                                        },
+                                        "template": {
+                                            "$id": "#/properties/cards/items/properties/templates/items/properties/body/properties/template",
+                                            "type": "string",
+                                            "title": "Template schema",
+                                            "default": "",
+                                            "examples": [
+                                                "defined target template view in assigned component-template code"
+                                            ],
+                                            "pattern": "^(.*)$"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
