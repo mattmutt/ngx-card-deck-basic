@@ -18,8 +18,7 @@ import { distinctUntilChanged } from "rxjs/operators";
 
 import * as common from 'schema-based-json-editor';
 /* tslint:disable:max-line-length */
-import * as simpleDeck3Configuration
-    from "../../../../../mock/network/vendors/extension/com.company.starter/metadata/dashboard/configurations/deck3.json";
+import * as simpleDeck3Configuration from "../../../../../mock/network/vendors/extension/com.company.starter/metadata/dashboard/configurations/deck3.json";
 import {
     DemoDashboardOrganizerPackageEnumeration,
     getOrganizerPackageKey
@@ -53,12 +52,12 @@ const cache = {
 export class DemoDeckConfigurationEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
-    @ViewChild(JSONEditorComponent) jsonEditor: JSONEditorComponent;
+    @ViewChild(JSONEditorComponent, {static: false}) jsonEditor: JSONEditorComponent;
 
     renderedSourceJSON: SimpleInlineConfigurationSchema;
 
     preprocessedDeckConfigurationSchema$: Observable<SimpleInlineConfigurationSchema>;
-    preprocessedDeckConfigurationErrorSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    preprocessedDeckConfigurationErrorSubject$ = new BehaviorSubject(false);
     loadingError$: Observable<boolean>;
 
     preprocessedDeckJSONSchema = preprocessedDeckJSONSchema.default;
@@ -137,7 +136,7 @@ export class DemoDeckConfigurationEditorComponent implements OnInit, AfterViewIn
     onCopyToClipboard(sourceInputElement: HTMLTextAreaElement, evt: Event) {
         const range = document.createRange();
         range.selectNode(sourceInputElement);
-        window.getSelection().addRange(range);
+        window.getSelection()!.addRange(range);
 
         try {
             const successful = document.execCommand('copy');
@@ -147,7 +146,7 @@ export class DemoDeckConfigurationEditorComponent implements OnInit, AfterViewIn
 
         // Remove the selections - NOTE: Should use
         // removeRange(range) when it is supported
-        window.getSelection().removeAllRanges();
+        window.getSelection()!.removeAllRanges();
 
     }
 
