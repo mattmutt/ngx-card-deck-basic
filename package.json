@@ -11,8 +11,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --no-aot --configuration=local --source-map=false",
-    "start:prod": "ng serve --prod --aot --configuration=production --build-optimizer=false --sourcemap=true --output-hashing=none",
+    "start": "ng serve --no-aot --configuration=local",
+    "start:prod": "ng serve --prod --aot --configuration=production",
     "build": "npm run build:local",
     "build:local": "ng build --configuration=local --source-map=true",
     "build:prod": "ng build --prod --base-href=/ngx-card-deck-starter/ --configuration=production --aot --build-optimizer=true --common-chunk=false --source-map=false --output-hashing=none",
