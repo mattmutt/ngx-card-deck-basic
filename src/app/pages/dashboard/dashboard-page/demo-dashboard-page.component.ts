@@ -55,13 +55,13 @@ const resources = {
 export class DemoDashboardPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // diagramming with SVG
-    @ViewChild("svgContainerHandle") svgContainerHandle: SVGSVGElement;
+    @ViewChild("svgContainerHandle", {static: false}) svgContainerHandle: SVGSVGElement;
 
-    @ViewChild("dashboardInstance") public dashboardInstance: DashboardComponent;
-    @ViewChild("dashboardInstance", {read: ViewContainerRef}) public dashboardInstanceViewContainerRef: ViewContainerRef;
+    @ViewChild("dashboardInstance", {static: false}) public dashboardInstance: DashboardComponent;
+    @ViewChild("dashboardInstance", {static: false, read: ViewContainerRef}) public dashboardInstanceViewContainerRef: ViewContainerRef;
 
     // demo extension points: subview captured - loose coupling
-    @ViewChild("canvasWidget", {read: ViewContainerRef}) canvasWidgetViewContainerRef: ViewContainerRef;
+    @ViewChild("canvasWidget", {static: false, read: ViewContainerRef}) canvasWidgetViewContainerRef: ViewContainerRef;
 
     // announce after changing zoom
     // tslint:disable-next-line:no-output-rename
@@ -303,7 +303,7 @@ export class DemoDashboardPageComponent implements OnInit, AfterViewInit, OnDest
     }
 
     /**
-     * prepare configuration by loading it over network or cache.
+     * prepare configuration by loading it over network or cache. Depends on CompanySample2DashboardConfigurationsCache
      * component destroy is not called by design because the router will recycle this class between similar routes
      */
     private provision(routeExposedParameters: Data) {

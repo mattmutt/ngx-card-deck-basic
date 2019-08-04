@@ -57,6 +57,7 @@
 
             "local": {
               "extractCss": true,
+             "sourceMap": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",

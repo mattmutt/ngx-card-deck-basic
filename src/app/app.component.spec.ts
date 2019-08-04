@@ -27,13 +27,13 @@ describe('AppComponent', () => {
         expect(app).toBeTruthy();
     }));
 
-    it(`should have as title 'ngx Card Deck Demo'`, async(() => {
+    it(`should have as title 'ngx Card Deck Starter'`, async(() => {
         const fixture = TestBed.createComponent<AppComponent>(AppComponent);
         fixture.componentInstance.navigationLayout = appNavigationLinksResourceJson;
 
         fixture.detectChanges();
         const app = fixture.debugElement.componentInstance;
-        const title = 'ngx Card Deck Demo';
+        const title = 'ngx Card Deck Starter';
         expect(app.title).toEqual(title);
     }));
 
